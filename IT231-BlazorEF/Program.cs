@@ -1,4 +1,3 @@
-using IT231_BlazorEF.Client.Pages;
 using IT231_BlazorEF.Components;
 
 namespace IT231_BlazorEF
@@ -11,16 +10,12 @@ namespace IT231_BlazorEF
 
             // Add services to the container.
             builder.Services.AddRazorComponents()
-                .AddInteractiveWebAssemblyComponents();
+                .AddInteractiveServerComponents();
 
             WebApplication app = builder.Build();
 
             // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseWebAssemblyDebugging();
-            }
-            else
+            if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
@@ -32,8 +27,7 @@ namespace IT231_BlazorEF
             app.UseAntiforgery();
 
             app.MapRazorComponents<App>()
-                .AddInteractiveWebAssemblyRenderMode()
-                .AddAdditionalAssemblies(typeof(Client._Imports).Assembly);
+                .AddInteractiveServerRenderMode();
 
             app.Run();
         }
