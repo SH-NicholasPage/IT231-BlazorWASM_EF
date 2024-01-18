@@ -1,6 +1,6 @@
-using IT231_BlazorEF.Components;
+using BlazorEF.Components;
 
-namespace IT231_BlazorEF
+namespace BlazorEF
 {
     public class Program
     {
@@ -18,6 +18,7 @@ namespace IT231_BlazorEF
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Error");
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
